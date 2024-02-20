@@ -1,0 +1,90 @@
+/* styles.css */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #FFF3E0; /* Orange très pâle */
+    color: #8E2E23; /* Rouge foncé pour le texte */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    min-height: 100vh;
+  }
+  
+  nav {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 1rem;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: #8E2E23; /* Rouge foncé */
+    font-weight: 500;
+  }
+  
+  nav ul li a.active, nav ul li a:hover {
+    color: #FF5722; /* Orange-rouge */
+    font-weight: bold;
+  }
+  
+  .game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+  }
+  
+  .letters-container button {
+    margin: 5px;
+    padding: 10px;
+    background-color: #FF5722; /* Orange-rouge pour boutons */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .letters-container button:hover {
+    background-color: #E64A19; /* Assombrissement au survol */
+  }
+  
+  .letters-container button:disabled {
+    background-color: #cccccc; /* Gris pour désactivé */
+    color: #666666;
+    cursor: not-allowed;
+  }
+  
+  input[type="text"], button[type="submit"] {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    color: #8E2E23; /* Rouge foncé pour le texte */
+  }
+  
+  input[type="text"] {
+    width: calc(100% - 22px); /* Ajustement pour padding et border */
+  }
+  
+  button[type="submit"] {
+    background-color: #FF5722; /* Orange-rouge */
+    color: white;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #E64A19; /* Assombrissement au survol */
+  }
+  
+  .error, .loading {
+    color: #D32F2F; /* Rouge pour les messages d'erreur */
+  }
+  

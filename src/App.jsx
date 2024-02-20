@@ -4,6 +4,7 @@ import Accueil from './pages/Accueil';
 import Jouer from './pages/Jouer';
 import Statistiques from './pages/Statistiques';
 import NotFoundPage from './pages/404';
+import './styles.css';
 
 const App = () => {
   return (

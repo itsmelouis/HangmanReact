@@ -36,6 +36,8 @@ const hangmanReducer = (state, action) => {
       return { ...state, gameStatus: 'win' };
     case 'LOSE':
       return { ...state, gameStatus: 'lose' };
+    case 'INCORRECT_GUESS':
+      return { ...state, incorrectGuesses: state.incorrectGuesses + 1 };
     case 'SET_PLAYER_NAME':
       return { ...state, playerName: action.payload };
     default:
@@ -90,14 +92,18 @@ export const HangmanProvider = ({ children }) => {
 
   useEffect(() => {
     const handleKeyPress = (event) => {
+      if (["INPUT", "TEXTAREA"].includes(document.activeElement.tagName)) {
+        return;
+      }
+  
       const keyPressed = event.key.toLowerCase();
       if (alphabet.includes(keyPressed) && !state.guessedLetters.includes(keyPressed)) {
         dispatch({ type: 'GUESS_LETTER', payload: keyPressed });
       }
     };
-
+  
     window.addEventListener('keydown', handleKeyPress);
-
+  
     return () => {
       window.removeEventListener('keydown', handleKeyPress);
     };
