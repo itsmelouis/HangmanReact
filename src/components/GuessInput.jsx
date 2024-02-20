@@ -9,28 +9,22 @@ const GuessInput = () => {
   const handleGuess = () => {
     const normalizedGuess = guess.trim().toLowerCase();
     if (normalizedGuess.length === 1 && !guessedLetters.includes(normalizedGuess)) {
-      // Si c'est une lettre unique non encore devinée
       if (word.toLowerCase().includes(normalizedGuess)) {
         dispatch({ type: 'GUESS_LETTER', payload: normalizedGuess });
       } else {
-        // La lettre n'est pas dans le mot, compter comme une erreur
         dispatch({ type: 'INCORRECT_GUESS' });
       }
     } else if (normalizedGuess.length > 1) {
-      // Si c'est un mot complet proposé
       if (normalizedGuess === word.toLowerCase()) {
-        // Le mot proposé est correct
-        dispatch({ type: 'WIN' });
+        dispatch({ type: 'WIN', payload: 2});
       } else {
-        // Le mot proposé est incorrect, compter comme une erreur
         dispatch({ type: 'INCORRECT_GUESS' });
-        if (incorrectGuesses + 1 >= maxIncorrectGuesses) {
-          // Si le nombre d'erreurs atteint le maximum après cette erreur
+        if (incorrectGuesses >= maxIncorrectGuesses) {
           dispatch({ type: 'LOSE' });
         }
       }
     }
-    setGuess(''); // Réinitialiser le champ de saisie
+    setGuess('');
   };
 
   return (
@@ -44,10 +38,10 @@ const GuessInput = () => {
         onKeyDown={e => e.key === 'Enter' && handleGuess()} // Permettre la validation avec la touche Entrée
       />
       <button
-        className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
+        className="focus:outline-none text-white bg-orange-600 hover:bg-orange-700 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
         onClick={handleGuess}
       >
-        Guess
+        Deviner
       </button>
     </div>
   );
