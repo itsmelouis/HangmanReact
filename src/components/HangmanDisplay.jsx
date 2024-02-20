@@ -9,12 +9,15 @@ const HangmanDisplay = () => {
   const maskedWord = 
     word
       .split('')
-      .map(letter => (guessedLetters.includes(letter.toLowerCase()) ? letter : '_'))
-      .join(' ');
-
+      .map(letter => (guessedLetters.includes(letter.toLowerCase()) ? letter : '_'));
   return (
     <div>
-      <div>Word: {maskedWord}</div>
+      <div>{maskedWord.map((word, i) => (
+        <span key={word + i}>{word}</span>
+      ))}</div>
+      <div>Incorrect letters: {guessedLetters.map((letter) => (
+        <span key={letter}>{letter}</span>
+      ))}</div>
       <div>Incorrect Guesses: {incorrectGuesses}/{maxIncorrectGuesses}</div>
       <button onClick={handleRestartGame}>Restart Game</button>
       <input type="text" placeholder="Enter word guess" onKeyDown={(e) => e.key === 'Enter' && handleWordGuess(e.target.value)} />
